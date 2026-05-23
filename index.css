@@ -1,0 +1,27 @@
+import React from 'react';
+import { clsx } from 'clsx';
+
+const Button = React.forwardRef(({ className, variant = 'default', size = 'default', children, ...props }, ref) => {
+  return (
+    <button
+      className={clsx(
+        'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+        variant === 'default' && 'bg-[#1EAE79] text-white hover:bg-[#0A5C3E]',
+        variant === 'outline' && 'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
+        variant === 'ghost' && 'hover:bg-accent hover:text-accent-foreground',
+        size === 'default' && 'h-10 px-4 py-2',
+        size === 'sm' && 'h-9 rounded-md px-3',
+        size === 'lg' && 'h-11 rounded-md px-8',
+        size === 'icon' && 'h-10 w-10',
+        className
+      )}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+});
+Button.displayName = 'Button';
+
+export { Button };
